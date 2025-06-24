@@ -1,0 +1,57 @@
+<?php
+
+header("Content-Type: application/json");
+
+require_once __DIR__ . '/controllers/pedidoController.php';
+
+$method = $_SERVER['REQUEST_METHOD'];
+$path = $_SERVER["PATH_INFO"] ?? '/';
+$controller = new PedidoController();
+
+switch ($_SERVER['REQUEST_METHOD']) {
+    case 'GET':
+        if ($path === '/api/pedidos') {
+            $controller->getAllPedidos();
+        } elseif (preg_match('/\/api\/pedidos\/(\d+)/', $path, $matches)) {
+            $id = $matches[1];
+            $controller->getIdPedido($id);
+        } else {
+            http_response_code(404);
+            echo json_encode(['error' => 'Ruta no encontrada']);
+        }
+        break;
+    
+    case 'POST':
+        if ($path === '/api/pedidos') {
+            $controller->addNewPedido();
+        } else {
+            http_response_code(404);
+            echo json_encode(['error' => 'Ruta no encontrada']);
+        }
+        break;
+
+    case 'PUT':
+        if (preg_match('/\/api\/pedidos\/(\d+)/', $path, $matches)) {
+            $id = $matches[1];
+            $controller->updatePedido($id);
+        } else {
+            http_response_code(404);
+            echo json_encode(['error' => 'Ruta no encontrada']);
+        }
+        break;
+
+    case 'DELETE':
+        if (preg_match('/\/api\/pedidos\/(\d+)/', $path, $matches)) {
+            $id = $matches[1];
+            $controller->deletePedido($id);
+        } else {
+            http_response_code(404);
+            echo json_encode(['error' => 'Ruta no encontrada']);
+        }
+        break;
+
+    default:
+        http_response_code(405);
+        echo json_encode(array("message" => "Metodo no permitido."));
+        break;
+}

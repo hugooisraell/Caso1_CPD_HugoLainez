@@ -30,15 +30,16 @@ Clave: X-API-Key: 123456ABCDEF
 
 ## ⚙️ Estructura del Proyecto
 
-/Caso1_CPD_HugoLainez/
-├── config/
-│ ├── conexion.php # Conexión a la base de datos
-│ └── auth.php # API Key
-├── controllers/
-│ └── pedidoController.php # Controlador principal
-├── models/
-│ └── Pedido.php # Clase de modelo Pedido
-├── index.php # Punto de entrada (router)
+   ```bash
+   /Caso1_CPD_HugoLainez/
+   ├── config/
+   │ ├── conexion.php # Conexión a la base de datos
+   │ └── auth.php # API Key
+   ├── controllers/
+   │ └── pedidoController.php # Controlador principal
+   ├── models/
+   │ └── Pedido.php # Clase de modelo Pedido
+   ├── index.php # Punto de entrada (router)
 
 La carpeta tests contiene varios scripts utilizados para probar la conexion a la base de datos mediante el modelo.
 

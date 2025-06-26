@@ -2,11 +2,28 @@
 
 header("Content-Type: application/json");
 
+require_once __DIR__ . '/config/auth.php';
+
 require_once __DIR__ . '/controllers/pedidoController.php';
 
+// Obtiene la clave
+$headers = getallheaders();
+$apiKey = $headers['X-API-Key'] ?? null;
+
+// obtiene la ruta
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
+
 $controller = new PedidoController();
+
+// Esto hace que todas las peticiones requieran una cabecera HTTP con la clave
+if ($apiKey !== API_KEY) {
+    http_response_code(401);
+    echo json_encode(['error' => 'No autorizado: clave API inválida']);
+    exit;
+} else {
+    echo json_encode(['resultado' => 'Acceso Concedido']);
+}
 
 // Ruta de ejecucion: 'http://localhost/comp-paralela-distribuida/Caso1_CPD_HugoLainez/index.php/api/pedidos'
 

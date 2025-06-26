@@ -30,7 +30,7 @@ Clave: X-API-Key: 123456ABCDEF
 
 ## ⚙️ Estructura del Proyecto
 
-   ``bash
+   >
    /Caso1_CPD_HugoLainez/
    ├── config/
    │ ├── conexion.php # Conexión a la base de datos
@@ -42,6 +42,8 @@ Clave: X-API-Key: 123456ABCDEF
    ├── index.php # Punto de entrada (router)
 
 La carpeta tests contiene varios scripts utilizados para probar la conexion a la base de datos mediante el modelo.
+
+---
 
 ## 🧠 Requisitos
 
@@ -63,5 +65,5 @@ La carpeta tests contiene varios scripts utilizados para probar la conexion a la
    En caso de cambiar el nombre de la base de datos debes modificar el cambio en conexion.php para que pueda conectar.
 
 4. Abre el proyecto en tu navegador local:
-    ```bash
-    http://localhost/Caso1_CPD_HugoLainez/index.php/api/pedidos
+   ```bash
+   http://localhost/Caso1_CPD_HugoLainez/index.php/api/pedidos

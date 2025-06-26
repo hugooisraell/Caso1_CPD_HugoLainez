@@ -30,7 +30,7 @@ Clave: X-API-Key: 123456ABCDEF
 
 ## ⚙️ Estructura del Proyecto
 
-   ```bash
+   ``bash
    /Caso1_CPD_HugoLainez/
    ├── config/
    │ ├── conexion.php # Conexión a la base de datos
